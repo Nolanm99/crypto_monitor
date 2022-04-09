@@ -1,0 +1,46 @@
+<%- include('monitor_main'); -%>
+
+<h3>Crypto Monitor <%= station_title %></h3>
+
+<form action="/cm/prices" method="post">
+    <div class="form-group">
+      <label for="symbolInput">Get Quote</label>
+      <input type="text" class="form-control" name="symbolInput" id="symbolInput" placeholder="BTC">
+    </div>
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+
+<p>
+  <br><h6>Crypto Monitor</h6><br>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Latest Price</th>
+            <th scope="col">24h%</th>
+            <th scope="col">7d%</th>
+            <th scope="col" style="text-align:center">Market Cap</th>
+          </tr>
+        </thead>
+        <% for (var i = 0; i < symbols.length; i++) { %>
+        <tr>
+          <td><%= symbols[i] %></td>
+          <td>$<%= quotes[i] %></td>
+          <td><%= day_changes[i] %></td>
+          <td><%= week_changes[i] %></td>
+          <td style="text-align:right">$<%= market_caps[i] %></td>
+        </tr>    
+        <% } %>
+      </table>
+    </div>
+  </div>
+
+
+</p>
+
+
+
